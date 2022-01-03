@@ -1,9 +1,14 @@
 <template>
-    <h1 class="text-xl text-blue-500">Hello world</h1>
+    <div>
+        <div v-for="category in categories" v-text="category.name">
+            
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
+        props: ['categories'],
         name: "Home"
     }
 </script>

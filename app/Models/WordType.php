@@ -10,4 +10,9 @@ class WordType extends Model
     use HasFactory;
 
     protected $fillable = ['type'];
+
+    public function words()
+    {
+        return $this->hasMany(Word::class);
+    }
 }
