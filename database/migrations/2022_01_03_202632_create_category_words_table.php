@@ -15,7 +15,7 @@ class CreateCategoryWordsTable extends Migration
     {
         Schema::create('category_words', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('word_category_id');
+            $table->foreignId('category_id');
             $table->foreignId('word_id');
             $table->timestamps();
         });

@@ -15,12 +15,12 @@ class CategoryWordSeeder extends Seeder
     public function run()
     {
         DB::table('category_words')->insert([
-            'word_category_id' => '1',
+            'category_id' => '1',
             'word_id' => '1'
         ]);
 
         DB::table('category_words')->insert([
-            'word_category_id' => '1',
+            'category_id' => '1',
             'word_id' => '2'
         ]);
     }

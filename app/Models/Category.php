@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WordCategory extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'translate'];
+    protected $fillable = ['name', 'translate', 'slug'];
 
-    public function CategoryWords()
+    public function categoryWords()
     {
         return $this->hasMany(CategoryWord::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

@@ -9,15 +9,15 @@ class CategoryWord extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['word_category_id', 'word_id'];
+    protected $fillable = ['category_id', 'word_id'];
 
-    public function WordCategory()
+    public function category()
     {
-        return $this->hasOne(WordCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function Word()
+    public function word()
     {
-        return $this->hasOne(Word::class);
+        return $this->belongsTo(Word::class);
     }
 }

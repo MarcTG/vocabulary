@@ -14,7 +14,7 @@
         </div>
 
         <div class="grid grid-cols-5 gap-4 mt-8">
-            <div @click="$inertia.visit('/')" v-for="category in categories.data" class="bg-gray-100 rounded-lg shadow overflow-hidden cursor-pointer">
+            <div @click="$inertia.visit(`/categories/${category.slug}`)" v-for="category in categories.data" class="bg-gray-100 rounded-lg shadow overflow-hidden cursor-pointer">
                 <img src="https://picsum.photos/300/200?random=1" alt="">
                 <div class="p-4 flex justify-between">
                     <h2 class="text-xl">{{ category.name }}</h2>
@@ -39,7 +39,7 @@
             }
         },
         methods: {
-            search: debounce(function (e) {
+            search: debounce( () => {
                 this.$inertia.get('/categories', { search: this.searchData }, { preserveState:true, replace:true })
             }, 500)
         }
