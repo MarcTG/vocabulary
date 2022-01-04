@@ -1,6 +1,17 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp,Head, Link } from '@inertiajs/inertia-vue3'
 import Layout from "./Shared/Layout";
+import { dom } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+dom.watch()
+
+import {
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart
+} from '@fortawesome/free-solid-svg-icons'
+library.add(
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart
+);
 
 createInertiaApp({
     resolve: async name => {

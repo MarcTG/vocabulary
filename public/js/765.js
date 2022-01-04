@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[765],{8765:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var r=t(821);const a={name:"Create"};const c=(0,t(3744).Z)(a,[["render",function(e,n,t,a,c,l){return(0,r.openBlock)(),(0,r.createElementBlock)("div",null," Create Categories ")}]])}}]);

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use \App\Http\Controllers\WordCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,12 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\WordCategoryController::class, 'index']);
+Route::get('/', function() {
+    return Inertia::render('Home');
+});
+
+Route::get('/categories', [WordCategoryController::class, 'index']);
+
+Route::get('/categories/create', [WordCategoryController::class, 'create']);
+
+

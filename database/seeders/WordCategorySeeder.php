@@ -18,5 +18,25 @@ class WordCategorySeeder extends Seeder
             'name' => 'Familie',
             'translate' => 'Familia'
         ]);
+
+        DB::table('word_categories')->insert([
+            'name' => 'Tiere',
+            'translate' => 'Aminales'
+        ]);
+
+        DB::table('word_categories')->insert([
+            'name' => 'House',
+            'translate' => 'Casa'
+        ]);
+
+        DB::table('word_categories')->insert([
+            'name' => 'Auto',
+            'translate' => 'Auto'
+        ]);
+
+        DB::table('word_categories')->insert([
+            'name' => 'Sport',
+            'translate' => 'Deporte'
+        ]);
     }
 }
