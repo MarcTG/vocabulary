@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'translate', 'slug'];
+    protected $fillable = ['name', 'translation', 'slug'];
 
     public function categoryWords()
     {

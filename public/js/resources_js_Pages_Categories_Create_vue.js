@@ -12,7 +12,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Create"
+  name: "Create",
+  props: {
+    words: Object
+  }
 });
 
 /***/ }),
@@ -29,8 +32,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"text-3xl\">Crea una nueva Categoria</h1><div class=\"mt-8 grid grid-cols-2 gap-4\"><div class=\"flex flex-col mb-2\"><label for=\"nombre\" class=\"block mb-2 uppercase font-semibold text-xs text-gray-700\">Nombre</label><input name=\"name\" id=\"nombre\" type=\"text\" class=\"rounded border border-gray-200 px-2 py-4 focus:outline-blue-400\"></div><div class=\"flex flex-col mb-2\"><label for=\"tranduccion\" class=\"block mb-2 uppercase font-semibold text-xs text-gray-700\">Traducción</label><input name=\"translation\" id=\"tranduccion\" type=\"text\" class=\"rounded border border-gray-200 px-2 py-4 focus:outline-blue-400\"></div></div>", 2);
+
+var _hoisted_3 = [_hoisted_1];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, " Create Categories ");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, _hoisted_3);
 }
 
 /***/ }),

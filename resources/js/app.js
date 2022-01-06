@@ -7,10 +7,10 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 dom.watch()
 
 import {
-    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes
 } from '@fortawesome/free-solid-svg-icons'
 library.add(
-    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes
 );
 
 createInertiaApp({

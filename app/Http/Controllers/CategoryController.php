@@ -48,4 +48,17 @@ class CategoryController extends Controller
     {
         return Inertia::render('Categories/Create');
     }
+
+    public function store(Request $request)
+    {
+        $attributes = $request->validate([
+            'name' => 'required',
+            'translation' => 'required',
+            'slug' => 'required'
+        ]);
+
+        $category = Category::create($attributes);
+
+        return redirect("/categories/$category->slug");
+    }
 }
