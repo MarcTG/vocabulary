@@ -3,7 +3,10 @@ import { createInertiaApp,Head, Link } from '@inertiajs/inertia-vue3'
 import Layout from "./Shared/Layout";
 import { dom } from '@fortawesome/fontawesome-svg-core'
 import { library } from '@fortawesome/fontawesome-svg-core';
-
+import { InertiaProgress } from '@inertiajs/progress'
+InertiaProgress.init({
+    showSpinner: true,
+})
 dom.watch()
 
 import {

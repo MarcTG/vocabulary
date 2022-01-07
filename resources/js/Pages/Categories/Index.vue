@@ -13,15 +13,18 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-5 gap-4 mt-8">
+        <div class="grid grid-cols-5 gap-4 my-8">
             <div @click="$inertia.visit(`/categories/${category.slug}`)" v-for="category in categories.data" class="bg-gray-100 rounded-lg shadow overflow-hidden cursor-pointer">
-                <img src="https://picsum.photos/300/200?random=1" alt="">
+                <img v-if="category.image" :src="category.image">
+                <img v-else src="https://picsum.photos/300/200?random=1" alt="">
                 <div class="p-4 flex justify-between">
                     <h2 class="text-xl">{{ category.name }}</h2>
                     <p class="self-center">Worte: {{ category.wordsCount }}</p>
                 </div>
             </div>
         </div>
+
+        <Pagination :info="{ 'from': categories.from, 'to': categories.to, 'total': categories.total }" :links="categories.links"></Pagination>
 
         <div class="fixed inset-0 w-full h-full z-20 bg-black bg-opacity-50 duration-300 overflow-y-auto" v-show="isOpen">
             <div class="relative sm:w-3/4 md:w-1/2 lg:w-1/4 mx-2 sm:mx-auto my-10 opacity-100">
@@ -36,13 +39,17 @@
                         </button>
                     </header>
                     <main class="mt-4">
-                        <div class="flex flex-col mb-2">
+                        <div class="flex flex-col mb-4">
                             <label for="name" class="block mb-2 uppercase font-semibold text-xs text-gray-700">Nombre</label>
                             <input v-model="form.name" name="name" id="name" type="text" class="rounded border border-gray-200 p-2 focus:outline-blue-400">
                         </div>
-                        <div class="flex flex-col mb-2">
+                        <div class="flex flex-col mb-4">
                             <label for="translation" class="block mb-2 uppercase font-semibold text-xs text-gray-700">Traducción</label>
                             <input v-model="form.translation" name="translation" id="translation" type="text" class="rounded border border-gray-200 p-2 focus:outline-blue-400">
+                        </div>
+                        <div class="flex flex-col mb-4">
+                            <label for="image" class="block mb-2 uppercase font-semibold text-xs text-gray-700">Imagen</label>
+                            <input @input="form.image = $event.target.files[0]" name="image" id="image" type="file" class="rounded border border-gray-200 p-2 focus:outline-blue-400">
                         </div>
                     </main>
                     <footer class="flex flex-row-reverse mt-8">
@@ -62,6 +69,7 @@
 
 <script>
     import debounce from "lodash/debounce"
+    import Pagination from '../../Shared/Pagination'
     export default {
         name: "Index",
         props: {
@@ -76,6 +84,7 @@
                     name: null,
                     translation: null,
                     slug: null,
+                    image: null,
                 })
             }
         },
@@ -88,7 +97,8 @@
                 this.form.slug = this.form.name.toLowerCase()
                 this.form.post('/categories/')
             },
-        }
+        },
+        components: {Pagination}
     }
 </script>
 

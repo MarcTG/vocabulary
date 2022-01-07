@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div class="mb-6">
-            <h1 class="text-5xl text-center">Categoria: {{category.name}} - {{category.translation}}</h1>
+        <div class="mb-6 flex flex-col">
+            <h1 class="text-5xl text-center mb-6">Categoria: {{category.name}} - {{category.translation}}</h1>
+            <img :src="category.image" alt="" class="mx-auto" style="max-width: 900px">
         </div>
-        <div class="mb-6">
+        <div class="mb-12">
             <h2 class="text-2xl mb-4">Palabras Agregadas</h2>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-blue-400">
@@ -101,17 +102,17 @@
         },
         methods: {
             search: debounce(function() {
-                this.$inertia.get(`/categories/${this.category.slug}`, {search: this.searchData}, {preserveState:true, replace:true})
+                this.$inertia.get(`/categories/${this.category.slug}`, {search: this.searchData}, {preserveState:true, replace:true, preserveScroll: true,})
             }, 500),
 
             addWord(wordId) {
                 this.searchData = ''
-                this.$inertia.post(`/category/word`, { 'category_id': this.category.id, 'word_id': wordId})
+                this.$inertia.post(`/category/word`, { 'category_id': this.category.id, 'word_id': wordId}, {preserveState:true, replace:true, preserveScroll: true,})
             },
 
             removeWord(id) {
                 console.log(id)
-                this.$inertia.delete(`/category/word/${id}`)
+                this.$inertia.delete(`/category/word/${id}`, {preserveState:true, replace:true, preserveScroll: true,})
             }
         }
     }

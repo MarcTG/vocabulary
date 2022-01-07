@@ -16,10 +16,11 @@ class CategoryController extends Controller
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('name', 'like', '%'.$search.'%');
                 })
+                ->orderBy('name', 'asc')
                 ->paginate(10)
                 ->withQueryString()
                 ->through(function ($category) {
-                    return ['name' => $category->name, 'wordsCount' => count($category->categoryWords), 'slug' => $category->slug];
+                    return ['name' => $category->name, 'wordsCount' => count($category->categoryWords), 'slug' => $category->slug, 'image' => $category->getFirstMediaUrl('image', 'thumb')];
                 }),
             'filters' => $request->only(['search'])
         ]);
@@ -59,7 +60,8 @@ class CategoryController extends Controller
                 'id' => $category->id,
                 'name' => $category->name,
                 'translation' => $category->translation,
-                'slug' => $category->slug
+                'slug' => $category->slug,
+                'image' => $category->getFirstMediaUrl('image', 'main')
             ],
             'words' => $words,
             'newWords' => $newWords
@@ -76,10 +78,15 @@ class CategoryController extends Controller
         $attributes = $request->validate([
             'name' => 'required',
             'translation' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
+            'image' => 'required'
         ]);
 
         $category = Category::create($attributes);
+
+        if ($request->hasFile('image')) {
+            $category->addMediaFromRequest('image')->toMediaCollection('image');
+        }
 
         return redirect("/categories/$category->slug");
     }
