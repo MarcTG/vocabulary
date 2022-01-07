@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Word;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,23 +25,44 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
         $words = [];
+        $wordsId = [];
         foreach ($category->categoryWords as $word) {
             $words[] = [
+                'id' => $word->word->id,
                 'singular' => $word->word->singular,
                 'plural' => $word->word->plural,
-                'translation' => $word->word->translation
+                'translation' => $word->word->translation,
+                'categoryWordId' => $word->id
             ];
+            $wordsId[] = $word->word->id;
         }
+
+
+        $newWords = Word::query()
+            ->when($wordsId, function ($query, $wordsId) {
+                $query->whereNotIn('id', $wordsId);
+            })
+            ->when($request->input('search'), function ($query, $search) {
+                $query->where('singular', 'like', '%'.$search.'%');
+            })
+            ->paginate(10)
+            ->withQueryString()
+            ->through(function ($word) {
+                return ['id' => $word->id, 'singular' => $word->singular, 'plural' => $word->plural, 'translation' => $word->translation];
+            });
 
         return Inertia::render('Categories/Show', [
             'category' => [
+                'id' => $category->id,
                 'name' => $category->name,
-                'translation' => $category->translation
+                'translation' => $category->translation,
+                'slug' => $category->slug
             ],
-            'words' => $words
+            'words' => $words,
+            'newWords' => $newWords
         ]);
     }
 

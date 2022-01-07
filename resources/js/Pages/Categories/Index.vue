@@ -80,8 +80,8 @@
             }
         },
         methods: {
-            search: debounce(() => {
-                this.$inertia.get('/categories', { search: this.searchData }, { preserveState:true, replace:true })
+            search: debounce(function() {
+                this.$inertia.get('/categories', {search: this.searchData}, {preserveState:true, replace:true})
             }, 500),
 
             createCategory() {

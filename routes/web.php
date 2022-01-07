@@ -24,4 +24,6 @@ Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
 Route::post('/categories', [CategoryController::class, 'store']);
 
+Route::post('/category/word', [\App\Http\Controllers\CategoryWordController::class, 'store']);
+Route::delete('/category/word/{categoryWord}', [\App\Http\Controllers\CategoryWordController::class, 'delete']);
 

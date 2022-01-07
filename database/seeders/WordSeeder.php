@@ -27,5 +27,26 @@ class WordSeeder extends Seeder
             'translation' => 'Padre',
             'word_type_id' => 2,
         ]);
+
+        DB::table('words')->insert([
+            'singular' => 'Hund',
+            'plural' => 'Hunde',
+            'translation' => 'Perro',
+            'word_type_id' => 2,
+        ]);
+
+        DB::table('words')->insert([
+            'singular' => 'Sonne',
+            'plural' => 'Sonnen',
+            'translation' => 'Sol',
+            'word_type_id' => 3,
+        ]);
+
+        DB::table('words')->insert([
+            'singular' => 'Kind',
+            'plural' => 'Kinder',
+            'translation' => 'Ninos',
+            'word_type_id' => 4,
+        ]);
     }
 }

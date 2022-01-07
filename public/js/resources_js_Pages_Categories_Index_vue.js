@@ -13,8 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
@@ -35,8 +33,8 @@ var _this = undefined;
   },
   methods: {
     search: lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-      _this.$inertia.get('/categories', {
-        search: _this.searchData
+      this.$inertia.get('/categories', {
+        search: this.searchData
       }, {
         preserveState: true,
         replace: true
