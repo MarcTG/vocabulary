@@ -37,7 +37,7 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button @click="removeWord(word.categoryWordId)" class="text-red-500 hover:text-red-700 hover:underline">Eliminar</button>
+                            <button @click="removeWord(word.categoryWordId)" :disabled="form.processing" class="text-red-500 hover:text-red-700 hover:underline">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -77,7 +77,7 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button @click="addWord(word.id)" class="text-green-500 hover:text-green-700 hover:underline">Agragar</button>
+                            <button @click="addWord(word.id)" :disabled="form.processing" class="text-green-500 hover:text-green-700 hover:underline">Agragar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -97,7 +97,11 @@
         },
         data() {
             return {
-                searchData: ''
+                searchData: '',
+                form: this.$inertia.form({
+                    'category_id': null,
+                    'word_id': null,
+                }),
             }
         },
         methods: {
@@ -107,12 +111,13 @@
 
             addWord(wordId) {
                 this.searchData = ''
-                this.$inertia.post(`/category/word`, { 'category_id': this.category.id, 'word_id': wordId}, {preserveState:true, replace:true, preserveScroll: true,})
+                this.form.category_id = this.category.id
+                this.form.word_id = wordId
+                this.form.post(`/category/word`, {preserveState:true, replace:true, preserveScroll: true,})
             },
 
             removeWord(id) {
-                console.log(id)
-                this.$inertia.delete(`/category/word/${id}`, {preserveState:true, replace:true, preserveScroll: true,})
+                this.form.delete(`/category/word/${id}`, {preserveState:true, replace:true, preserveScroll: true,})
             }
         }
     }

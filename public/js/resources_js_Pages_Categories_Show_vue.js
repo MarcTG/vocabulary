@@ -23,7 +23,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      searchData: ''
+      searchData: '',
+      form: this.$inertia.form({
+        'category_id': null,
+        'word_id': null
+      })
     };
   },
   methods: {
@@ -38,18 +42,16 @@ __webpack_require__.r(__webpack_exports__);
     }, 500),
     addWord: function addWord(wordId) {
       this.searchData = '';
-      this.$inertia.post("/category/word", {
-        'category_id': this.category.id,
-        'word_id': wordId
-      }, {
+      this.form.category_id = this.category.id;
+      this.form.word_id = wordId;
+      this.form.post("/category/word", {
         preserveState: true,
         replace: true,
         preserveScroll: true
       });
     },
     removeWord: function removeWord(id) {
-      console.log(id);
-      this.$inertia["delete"]("/category/word/".concat(id), {
+      this.form["delete"]("/category/word/".concat(id), {
         preserveState: true,
         replace: true,
         preserveScroll: true
@@ -138,7 +140,7 @@ var _hoisted_14 = {
 var _hoisted_15 = {
   "class": "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
 };
-var _hoisted_16 = ["onClick"];
+var _hoisted_16 = ["onClick", "disabled"];
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-2xl mb-4"
@@ -211,7 +213,7 @@ var _hoisted_31 = {
 var _hoisted_32 = {
   "class": "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
 };
-var _hoisted_33 = ["onClick"];
+var _hoisted_33 = ["onClick", "disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_2, "Categoria: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.category.name) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.category.translation), 1
   /* TEXT */
@@ -235,6 +237,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $options.removeWord(word.categoryWordId);
       },
+      disabled: $data.form.processing,
       "class": "text-red-500 hover:text-red-700 hover:underline"
     }, "Eliminar", 8
     /* PROPS */
@@ -264,6 +267,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $options.addWord(word.id);
       },
+      disabled: $data.form.processing,
       "class": "text-green-500 hover:text-green-700 hover:underline"
     }, "Agragar", 8
     /* PROPS */
