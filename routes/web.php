@@ -20,13 +20,15 @@ Route::get('/', function() {
     return Inertia::render('Home');
 });
 
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::prefix('/categories')->group(function (){
+    Route::get('', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::get('/{category}', [CategoryController::class, 'show'])->name('categories.show');
+    Route::post('', [CategoryController::class, 'store']);
+    Route::post('/update', [CategoryController::class, 'update']);
+    Route::delete('', [CategoryController::class, 'delete']);
+});
 
-Route::get('/categories/create', [CategoryController::class, 'create']);
-Route::get('/categories/{category}', [CategoryController::class, 'show']);
-Route::post('/categories', [CategoryController::class, 'store']);
-Route::post('/categories/update', [CategoryController::class, 'update']);
-Route::delete('/categories', [CategoryController::class, 'delete']);
 
 Route::post('/category/word', [CategoryWordController::class, 'store']);
 Route::delete('/category/word/{categoryWord}', [CategoryWordController::class, 'delete']);

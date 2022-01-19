@@ -10,10 +10,10 @@ InertiaProgress.init({
 dom.watch()
 
 import {
-    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes, faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons'
 library.add(
-    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes
+    faArrowLeft, faArrowRight, faSave, faEdit, faDotCircle, faTrash, faPlus, faChevronDown, faSearch, faShoppingCart, faTimes, faExclamationTriangle
 );
 
 createInertiaApp({
