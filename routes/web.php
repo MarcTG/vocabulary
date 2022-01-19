@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\CategoryController;
+use \App\Http\Controllers\CategoryWordController;
+use App\Http\Controllers\WordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +25,12 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
 Route::post('/categories', [CategoryController::class, 'store']);
+Route::post('/categories/update', [CategoryController::class, 'update']);
+Route::delete('/categories', [CategoryController::class, 'delete']);
 
-Route::post('/category/word', [\App\Http\Controllers\CategoryWordController::class, 'store']);
-Route::delete('/category/word/{categoryWord}', [\App\Http\Controllers\CategoryWordController::class, 'delete']);
+Route::post('/category/word', [CategoryWordController::class, 'store']);
+Route::delete('/category/word/{categoryWord}', [CategoryWordController::class, 'delete']);
+
+Route::get('/words', [WordController::class, 'index']);
+Route::get('/words/{word}', [WordController::class, 'show']);
 

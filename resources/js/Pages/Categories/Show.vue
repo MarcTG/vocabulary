@@ -1,7 +1,13 @@
 <template>
     <div>
         <div class="mb-6 flex flex-col">
-            <h1 class="text-5xl text-center mb-6">Categoria: {{category.name}} - {{category.translation}}</h1>
+            <div class="flex justify-between">
+                <h1 class="text-5xl text-center mb-6">Categoria: {{category.name}} - {{category.translation}}</h1>
+                <div class="">
+                    <button @click="this.$refs.create.open()" class="px-6 py-3 rounded-lg rounded-r-none bg-gray-200 text-gray-600 inline hover:bg-blue-600 hover:text-white"><i class="fas fa-edit"></i></button>
+                    <button @click="remove" class="px-6 py-3 rounded-lg rounded-l-none bg-gray-200 text-gray-6000 inline hover:bg-red-600 hover:text-white"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
             <img :src="category.image" alt="" class="mx-auto" style="max-width: 900px">
         </div>
         <div class="mb-12">
@@ -83,11 +89,15 @@
                 </tbody>
             </table>
         </div>
+
+        <Edit ref="create" :category="category"></Edit>
+
     </div>
 </template>
 
 <script>
     import debounce from "lodash/debounce"
+    import Edit from "./CreateOrEdit"
     export default {
         name: "Show",
         props: {
@@ -118,7 +128,18 @@
 
             removeWord(id) {
                 this.form.delete(`/category/word/${id}`, {preserveState:true, replace:true, preserveScroll: true,})
+            },
+
+            remove() {
+                this.$inertia.delete('/categories', {
+                    data: {
+                        'id': this.category.id
+                    }
+                })
             }
+        },
+        components: {
+            Edit
         }
     }
 </script>

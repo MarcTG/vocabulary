@@ -36882,13 +36882,13 @@ function compileToFunction(template, options) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./Categories/Create": [
-		"./resources/js/Pages/Categories/Create.vue",
-		"resources_js_Pages_Categories_Create_vue"
+	"./Categories/CreateOrEdit": [
+		"./resources/js/Pages/Categories/CreateOrEdit.vue",
+		"resources_js_Pages_Categories_CreateOrEdit_vue"
 	],
-	"./Categories/Create.vue": [
-		"./resources/js/Pages/Categories/Create.vue",
-		"resources_js_Pages_Categories_Create_vue"
+	"./Categories/CreateOrEdit.vue": [
+		"./resources/js/Pages/Categories/CreateOrEdit.vue",
+		"resources_js_Pages_Categories_CreateOrEdit_vue"
 	],
 	"./Categories/Index": [
 		"./resources/js/Pages/Categories/Index.vue",
@@ -37071,7 +37071,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21.1","_id":"axios@0.21.4","_inB
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Categories_Create_vue":1,"resources_js_Pages_Categories_Index_vue":1,"resources_js_Pages_Categories_Show_vue":1,"resources_js_Pages_Home_vue":1,"resources_js_Pages_Word_Index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Categories_CreateOrEdit_vue":1,"resources_js_Pages_Categories_Index_vue":1,"resources_js_Pages_Categories_Show_vue":1,"resources_js_Pages_Home_vue":1,"resources_js_Pages_Word_Index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

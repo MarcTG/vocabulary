@@ -9,6 +9,17 @@ use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
+    private $rules;
+
+    public function __construct()
+    {
+        $this->rules = [
+            'name' => 'required',
+            'translation' => 'required',
+            'slug' => 'required',
+        ];
+    }
+
     public function index(Request $request)
     {
         return Inertia::render('Categories/Index', [
@@ -75,12 +86,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $attributes = $request->validate([
-            'name' => 'required',
-            'translation' => 'required',
-            'slug' => 'required',
-            'image' => 'required'
-        ]);
+        $attributes = $request->validate($this->rules);
 
         $category = Category::create($attributes);
 
@@ -89,5 +95,31 @@ class CategoryController extends Controller
         }
 
         return redirect("/categories/$category->slug");
+    }
+
+    public function update(Request $request)
+    {
+        $validations = $this->rules;
+        $validations['id'] = 'required';
+
+        $attributes = $request->validate($validations);
+
+        $category = Category::findOrFail($attributes['id']);
+
+        if ($request->hasFile('image')) {
+            $category->clearMediaCollection('image');
+            $category->addMediaFromRequest('image')->toMediaCollection('image');
+        }
+
+        $category->update($attributes);
+
+        return redirect("/categories/$category->slug");
+    }
+
+    public function delete(Request $request)
+    {
+        Category::findOrFail($request->id)->delete();
+
+        return redirect('/categories');
     }
 }
