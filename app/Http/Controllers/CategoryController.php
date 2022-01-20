@@ -120,6 +120,6 @@ class CategoryController extends Controller
     {
         Category::findOrFail($request->id)->delete();
 
-        return redirect('categories.index');
+        return redirect('/categories');
     }
 }

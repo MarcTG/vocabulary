@@ -1,17 +1,27 @@
 <template>
     <div>
         <div class="mb-6 flex flex-col">
-            <div class="flex justify-between">
-                <h1 class="text-5xl text-center mb-6">Categoria: {{category.name}} - {{category.translation}}</h1>
-                <div class="">
-                    <button @click="this.$refs.create.open()" class="px-6 py-3 rounded-lg rounded-r-none bg-gray-200 text-gray-600 inline hover:bg-blue-600 hover:text-white"><i class="fas fa-edit"></i></button>
-                    <button @click="remove" class="px-6 py-3 rounded-lg rounded-l-none bg-gray-200 text-gray-6000 inline hover:bg-red-600 hover:text-white"><i class="fas fa-trash"></i></button>
+            <div class="flex justify-between mb-6">
+                <h1 class="text-5xl text-center text-slate-500 font-medium">Categoria: {{category.name}} - {{category.translation}}</h1>
+                <div class="group-btn">
+                    <button @click="this.$refs.create.open()" class="btn-primary-light text-xl"><i class="fas fa-edit"></i></button>
+                    <button @click="$refs.modal.open()" class="btn-danger-light text-xl"><i class="fas fa-trash"></i></button>
                 </div>
+                <v-modal ref="modal">
+                    <template v-slot:header>
+                        <h2>Estas seguro?</h2>
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </template>
+
+                    <p>La categoria se eliminara pero las palabras dentro de la categoria, no.</p>
+
+                    <button @click="remove" class="btn btn-danger-light text-xl">Eliminar</button>
+                </v-modal>
             </div>
             <img :src="category.image" alt="" class="mx-auto" style="max-width: 900px">
         </div>
         <div class="mb-12">
-            <h2 class="text-2xl mb-4">Palabras Agregadas</h2>
+            <h2 class="text-2xl mb-4 text-slate-500">Palabras Agregadas</h2>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-blue-400">
                     <tr>
@@ -33,13 +43,13 @@
                 <tbody class="bg-gray-50 divide-y divide-gray-200">
                     <tr v-for="word in words">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.singular }}</div>
+                            <div class="text-sm text-gray-900 text-slate-600">{{ word.singular }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.plural }}</div>
+                            <div class="text-sm text-gray-900 text-slate-600">{{ word.plural }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.translation }}</div>
+                            <div class="text-sm text-gray-900 text-slate-600">{{ word.translation }}</div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -50,7 +60,7 @@
             </table>
         </div>
         <div>
-            <h2 class="text-2xl mb-4">Agrega nuevas Palabras</h2>
+            <h2 class="text-2xl mb-4 text-slate-500">Agrega nuevas Palabras</h2>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-blue-400">
                     <tr>
@@ -73,13 +83,13 @@
                 <tbody class="bg-gray-50 divide-y divide-gray-200">
                     <tr v-for="word in newWords.data">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.singular }}</div>
+                            <div class="text-sm text-slate-600">{{ word.singular }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.plural }}</div>
+                            <div class="text-sm text-slate-600">{{ word.plural }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ word.translation }}</div>
+                            <div class="text-sm text-slate-600">{{ word.translation }}</div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -91,12 +101,12 @@
         </div>
 
         <Edit ref="create" :category="category"></Edit>
-
     </div>
 </template>
 
 <script>
     import debounce from "lodash/debounce"
+    import Modal from "../../Shared/Modal"
     import Edit from "./CreateOrEdit"
     export default {
         name: "Show",
@@ -139,7 +149,8 @@
             }
         },
         components: {
-            Edit
+            Edit,
+            'v-modal' : Modal
         }
     }
 </script>

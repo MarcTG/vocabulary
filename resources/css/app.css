@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .btn {
+        @apply inline font-semibold py-2 px-4 w-32 rounded-lg shadow-lg transition-all duration-300 shadow-lg focus:outline-none hover:shadow-none;
+    }
+
+    .btn-lg {
+        @apply font-semibold py-2 px-4 w-40 rounded-lg shadow-lg transition-all duration-300 shadow-lg focus:outline-none hover:shadow-none;
+    }
+
+    .btn-primary {
+        @apply bg-cyan-400 text-white hover:bg-cyan-600 focus:ring;
+    }
+
+    .btn-primary-light {
+        @apply bg-slate-100 text-cyan-600 hover:text-white hover:bg-cyan-600 focus:ring;
+    }
+
+    .btn-success {
+        @apply bg-green-500 text-white hover:bg-green-600 focus:ring ring-green-300;
+    }
+
+    .btn-success-light {
+        @apply bg-gray-200 text-gray-600 hover:text-white hover:bg-green-600 focus:ring ring-green-300;
+    }
+
+    .btn-danger {
+        @apply bg-rose-500 text-white hover:bg-rose-600 focus:ring ring-rose-300;
+    }
+
+    .btn-danger-light {
+        @apply bg-slate-100 text-rose-500 hover:bg-rose-600 hover:text-white focus:bg-rose-600 focus:text-white focus:ring ring-rose-300 ;
+    }
+
+    .group-btn {
+        @apply shadow-lg flex rounded-lg shadow-lg;
+    }
+
+    .group-btn > button {
+        @apply font-semibold py-2 px-4 w-40 transition-all duration-300 focus:outline-none;
+    }
+
+    .group-btn > button:first-child  {
+        @apply rounded-l-lg;
+    }
+
+    .group-btn > button:last-child {
+        @apply rounded-r-lg;
+    }
+}

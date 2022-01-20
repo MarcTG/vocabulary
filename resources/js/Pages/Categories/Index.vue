@@ -2,13 +2,13 @@
     <div>
         <div class="flex justify-between">
 
-            <h1 class="text-3xl">Categorias</h1>
+            <h1 class="text-5xl text-slate-500">Categorias</h1>
 
             <div class="flex">
-                <button class="text-black px-4 py-2 bg-blue-400 hover:bg-blue-600 hover:shadow-lg shadow mr-4 rounded-lg text-white" @click="() => { this.$refs.create.open() }">Crear Categoria</button>
+                <button class="btn-lg btn-primary mr-4" @click="() => { this.$refs.create.open() }">Crear Categoria</button>
                 <div class="relative">
-                    <input v-on:input="search()" v-model="searchData" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-blue-400" type="text" placeholder="Search ...">
-                    <button class="-ml-12 z-20 px-4 py-2 text-blue-400 text-lg hover:text-blue-600"><i class="fas fa-search"></i></button>
+                    <input v-on:input="search()" v-model="searchData" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-blue-400" type="text" placeholder="Busca categorias...">
+                    <button class="-ml-12 z-20 px-4 py-2 text-cyan-500 text-lg hover:text-cyan-700"><i class="fas fa-search"></i></button>
                 </div>
             </div>
         </div>
@@ -18,8 +18,8 @@
                 <img v-if="category.image" :src="category.image">
                 <img v-else src="https://picsum.photos/300/200?random=1" alt="">
                 <div class="p-4 flex justify-between">
-                    <h2 class="text-xl">{{ category.name }}</h2>
-                    <p class="self-center">Worte: {{ category.wordsCount }}</p>
+                    <h2 class="text-xl text-slate-600">{{ category.name }}</h2>
+                    <p class="self-center text-slate-500">Palabras: {{ category.wordsCount }}</p>
                 </div>
             </div>
         </div>

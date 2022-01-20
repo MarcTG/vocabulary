@@ -28831,22 +28831,22 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "p-6 bg-gray-200"
+  "class": "p-6 bg-cyan-500"
 };
 var _hoisted_3 = {
-  "class": "flex justify-between"
+  "class": "flex justify-between container mx-auto"
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "font-bold text-lg"
+  "class": "text-white text-lg font-semibold"
 }, "My App"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<p class=\"text-sm ml-4\">Welcome back, {{ username }}</p>")], -1
 /* HOISTED */
 );
 
 var _hoisted_5 = {
-  "class": "p-6 container mx-auto"
+  "class": "container mx-auto mt-6 mx-auto"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -28951,7 +28951,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-black hover:underline", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-white hover:underline font-semibold text-lg", {
       'font-bold underline': $props.active
     }])
   }, {
