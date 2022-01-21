@@ -4,18 +4,25 @@
             <div class="flex justify-between mb-6">
                 <h1 class="text-5xl text-center text-slate-500 font-medium">Categoria: {{category.name}} - {{category.translation}}</h1>
                 <div class="group-btn">
-                    <button @click="this.$refs.create.open()" class="btn-primary-light text-xl"><i class="fas fa-edit"></i></button>
-                    <button @click="$refs.modal.open()" class="btn-danger-light text-xl"><i class="fas fa-trash"></i></button>
+                    <button @click="$refs.create.open()" class="btn-primary-light text-xl"><i class="fas fa-edit"></i></button>
+                    <button @click="$refs.alert.open()" class="btn-danger-light text-xl"><i class="fas fa-trash"></i></button>
                 </div>
-                <v-modal ref="modal">
+                <v-modal ref="alert">
                     <template v-slot:header>
-                        <h2>Estas seguro?</h2>
-                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="flex flex-col">
+                            <span class="text-9xl text-rose-400 mx-auto"><i class="fas fa-exclamation-triangle"></i></span>
+                            <h2 class="text-3xl text-center text-slate-600 mt-4">¿Estás seguro?</h2>
+                        </div>
                     </template>
 
-                    <p>La categoria se eliminara pero las palabras dentro de la categoria, no.</p>
+                    <p class="text-slate-600 text-lg">La categoria se eliminara pero las palabras dentro de la categoria, no.</p>
 
-                    <button @click="remove" class="btn btn-danger-light text-xl">Eliminar</button>
+                    <template v-slot:footer>
+                        <div class="flex justify-end">
+                            <button @click="$refs.alert.close()" class="btn btn-primary mr-4">Cancelar</button>
+                            <button @click="remove" class="btn btn-danger-light">Eliminar</button>
+                        </div>
+                    </template>
                 </v-modal>
             </div>
             <img :src="category.image" alt="" class="mx-auto" style="max-width: 900px">

@@ -8,11 +8,11 @@
 
                 <transition name="scale">
                     <div v-show="isOpen"  class="p-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                        <header class="mb-6">
+                        <header class="mb-8">
                             <slot name="header"></slot>
                         </header>
 
-                        <main class="mb-6">
+                        <main class="mb-8">
                             <slot></slot>
                         </main>
 

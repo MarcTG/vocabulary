@@ -15,19 +15,22 @@
     <section class="container mx-auto mt-6 mx-auto">
         <slot/>
     </section>
+
+    <Notification></Notification>
 </template>
 
 <script>
     import Nav from './Nav'
-
+    import Notification from '../Shared/Notification'
     export default {
         name: "Layout",
-        components: { Nav },
+        components: { Nav, Notification },
         computed: {
 /*            username() {
                 return this.$page.props.auth.user.username
             }*/
-        }
+        },
+
     }
 </script>
 

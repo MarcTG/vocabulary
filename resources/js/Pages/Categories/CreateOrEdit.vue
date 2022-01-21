@@ -81,10 +81,20 @@
 
                 if (this.isEdit) {
                     await this.form.post('/categories/update', {
-                        onSuccess: () => this.$refs.modal.close(),
+                        onSuccess: () =>  {
+                            this.$refs.modal.close()
+                            this.emitter.emit('showNotification',{ message: "Categoria editada correctamente.", type: 0})
+                        },
+                        onError: (errors) => {
+                            this.emitter.emit('showNotification',{ message: "Hubo un problema al guardar.", type: 1})
+                        }
                     })
                 } else {
-                    await this.form.post('/categories/')
+                    await this.form.post('/categories/', {
+                        onSuccess: () => {
+                            this.emitter.emit('showNotification',{ message: "Categoria creada correctamente", type: 0})
+                        }
+                    })
                 }
             },
 
