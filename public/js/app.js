@@ -28883,7 +28883,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "p-6 bg-cyan-500"
+  "class": "p-6 bg-cyan-500 shadow-lg"
 };
 var _hoisted_3 = {
   "class": "flex justify-between container mx-auto"
@@ -29045,7 +29045,7 @@ var _hoisted_1 = {
 };
 var _hoisted_2 = {
   key: 0,
-  "class": "text-3xl text-emerald-400 mr-2 self-center"
+  "class": "text-3xl text-emerald-400 mr-4 self-center"
 };
 
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
@@ -29059,7 +29059,7 @@ var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_4 = [_hoisted_3];
 var _hoisted_5 = {
   key: 1,
-  "class": "text-3xl text-rose-400 mr-2 self-center"
+  "class": "text-3xl text-rose-400 mr-4 self-center"
 };
 
 var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {

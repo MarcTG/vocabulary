@@ -20,92 +20,71 @@
                     <template v-slot:footer>
                         <div class="flex justify-end">
                             <button @click="$refs.alert.close()" class="btn btn-primary mr-4">Cancelar</button>
-                            <button @click="remove" class="btn btn-danger-light">Eliminar</button>
+                            <button @click="remove" :disabled="categoryForm.processing" class="btn btn-danger-light">Eliminar</button>
                         </div>
                     </template>
                 </v-modal>
             </div>
             <img :src="category.image" alt="" class="mx-auto" style="max-width: 900px">
         </div>
-        <div class="mb-12">
-            <h2 class="text-2xl mb-4 text-slate-500">Palabras Agregadas</h2>
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-blue-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Singular
-                        </th>
-                        <th scope="col" class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Plural
-                        </th>
-                        <th scope="col" class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Traducción
-                        </th>
 
-                        <th scope="col" class="relative px-6 py-6">
-                            <span class="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="bg-gray-50 divide-y divide-gray-200">
-                    <tr v-for="word in words">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900 text-slate-600">{{ word.singular }}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900 text-slate-600">{{ word.plural }}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900 text-slate-600">{{ word.translation }}</div>
-                        </td>
+        <h2 class="text-2xl mb-4 text-slate-500">Palabras Agregadas</h2>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button @click="removeWord(word.categoryWordId)" :disabled="form.processing" class="text-red-500 hover:text-red-700 hover:underline">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="shadow-lg rounded-lg overflow-hidden mb-16">
+            <div class="grid grid-cols-4 bg-indigo-400 px-6 text-left text-sm font-medium text-white uppercase h-16 items-center">
+                <span>Singular</span>
+                <span>Plural</span>
+                <span>Traducción</span>
+                <span class="sr-only">Delete</span>
+            </div>
+
+            <div class="grid grid-cols-4 bg-slate-50 px-6 py-4 text-sm text-slate-600 text-left hover:bg-indigo-50" v-for="word in words">
+                <span>{{ word.singular }}</span>
+
+
+                <span>{{ word.plural }}</span>
+
+
+                <span>{{ word.translation }}</span>
+
+                <div class="text-right font-medium">
+                    <button @click="removeWord(word.categoryWordId)" :disabled="form.processing" class="text-rose-500 hover:text-rose-700 hover:underline">Remover</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <h2 class="text-2xl mb-4 text-slate-500">Agrega nuevas Palabras</h2>
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-blue-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Singular
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Plural
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                            Traducción
-                        </th>
 
-                        <th scope="col" class="relative px-6 py-3 float-right">
-                            <input v-on:input="search()" v-model="searchData" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-blue-400" type="text" placeholder="Search ...">
-                            <button class="-ml-12 z-20 px-4 py-2 text-blue-400 text-lg hover:text-blue-600"><i class="fas fa-search"></i></button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="bg-gray-50 divide-y divide-gray-200">
-                    <tr v-for="word in newWords.data">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-slate-600">{{ word.singular }}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-slate-600">{{ word.plural }}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-slate-600">{{ word.translation }}</div>
-                        </td>
+        <h2 class="text-2xl mb-4 text-slate-500">Agrega nuevas palabras</h2>
 
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button @click="addWord(word.id)" :disabled="form.processing" class="text-green-500 hover:text-green-700 hover:underline">Agragar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="shadow-lg rounded-lg overflow-hidden">
+            <div class="grid grid-cols-4 bg-indigo-400 px-6 text-left text-sm font-medium text-white uppercase h-16 items-center">
+                <span>Singular</span>
+
+                <span>Plural</span>
+
+                <span>Traducción</span>
+
+                <div class="relative flex justify-end">
+                    <input v-on:input="search()" v-model="searchData" class="border border-gray-300 rounded-lg focus:outline-blue-400 text-base text-slate-600 py-2 px-2" type="text" placeholder="Search ...">
+                    <button class="-ml-12 z-20 px-4 py-2 text-blue-400 text-lg hover:text-blue-600"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-4 bg-slate-50 px-6 py-4 text-sm text-slate-600 text-left hover:bg-indigo-50" v-for="word in newWords.data">
+                <span>
+                    {{ word.singular }}
+                </span>
+                <span>
+                    {{ word.plural }}
+                </span>
+                <span>
+                    {{ word.translation }}
+                </span>
+                <div class="text-right font-medium">
+                    <button @click="addWord(word.id)" :disabled="form.processing" class="text-green-500 hover:text-green-700 hover:underline">Agragar</button>
+                </div>
+            </div>
         </div>
+
 
         <Edit ref="create" :category="category"></Edit>
     </div>
@@ -115,6 +94,7 @@
     import debounce from "lodash/debounce"
     import Modal from "../../Shared/Modal"
     import Edit from "./CreateOrEdit"
+
     export default {
         name: "Show",
         props: {
@@ -126,9 +106,13 @@
             return {
                 searchData: '',
                 form: this.$inertia.form({
-                    'category_id': null,
+                    'id': null,
+                    'category_id': this.category.id,
                     'word_id': null,
                 }),
+                categoryForm: this.$inertia.form({
+                    'id': this.category.id
+                })
             }
         },
         methods: {
@@ -138,19 +122,39 @@
 
             addWord(wordId) {
                 this.searchData = ''
-                this.form.category_id = this.category.id
                 this.form.word_id = wordId
-                this.form.post(`/category/word`, {preserveState:true, replace:true, preserveScroll: true,})
+                this.form.post(`/category/word`, {
+                    preserveState:true, preserveScroll: true,
+                    onSuccess: () => {
+                        this.emitter.emit('showNotification', { message: "Palabra agregada satisfactoriamente", type: 0})
+                    },
+                    onError: () => {
+                        this.emitter.emit('showNotification', { message: "Hubo un problema al agregar la palabra.", type: 1})
+                    },
+                })
             },
 
             removeWord(id) {
-                this.form.delete(`/category/word/${id}`, {preserveState:true, replace:true, preserveScroll: true,})
+                this.form.id = id
+                this.form.delete(`/category/word/`, {
+                    onSuccess: () => {
+                        this.emitter.emit('showNotification', { message: "Palabra removida satisfactoriamente", type: 0})
+                    },
+                    onError: () => {
+                        this.emitter.emit('showNotification', { message: "Hubo un problema al remover la palabra.", type: 1})
+                    },
+                    preserveState:true,
+                    preserveScroll: true,
+                })
             },
 
             remove() {
-                this.$inertia.delete('/categories', {
-                    data: {
-                        'id': this.category.id
+                this.categoryForm.delete('/categories', {
+                    onSuccess: (page) => {
+                        this.emitter.emit('showNotification', { message: "Categoria eliminada correctamente.", type: 0})
+                    },
+                    onError: (errors) => {
+                        this.emitter.emit('showNotification', { message: "Hubo un problema al eliminar la categoria.", type: 1})
                     }
                 })
             }

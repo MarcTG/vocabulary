@@ -2,7 +2,7 @@
     <Head>
         <title>My App</title>
     </Head>
-    <section class="p-6 bg-cyan-500">
+    <section class="p-6 bg-cyan-500 shadow-lg">
         <header class="flex justify-between container mx-auto">
             <div class="flex items-center">
                 <h1 class="text-white text-lg font-semibold">My App</h1>

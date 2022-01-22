@@ -9,7 +9,6 @@
 </template>
 
 <script>
-    import mitt from 'mitt'
     export default {
         props: ['categories'],
         name: "Home",

@@ -2,10 +2,10 @@
     <div class="mr-6 fixed top-20 right-0 w-80 z-20">
         <transition-group name="fade" tag="div"  class="w-full">
             <div v-for="notification in notifications" :key="notification.key" class="rounded-lg shadow-xl p-4 mt-4 text-lg flex" :class="notification.style">
-                <span v-if="notification.type === 0" class="text-3xl text-emerald-400 mr-2 self-center">
+                <span v-if="notification.type === 0" class="text-3xl text-emerald-400 mr-4 self-center">
                     <i class="fas fa-check-circle"></i>
                 </span>
-                <span v-else class="text-3xl text-rose-400 mr-2 self-center">
+                <span v-else class="text-3xl text-rose-400 mr-4 self-center">
                     <i class="fas fa-exclamation-triangle"></i>
                 </span>
                 <span class="leading-tight self-center">{{ notification.message }}</span>

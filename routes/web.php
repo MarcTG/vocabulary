@@ -31,7 +31,7 @@ Route::prefix('/categories')->group(function (){
 
 
 Route::post('/category/word', [CategoryWordController::class, 'store']);
-Route::delete('/category/word/{categoryWord}', [CategoryWordController::class, 'delete']);
+Route::delete('/category/word/', [CategoryWordController::class, 'delete']);
 
 Route::get('/words', [WordController::class, 'index']);
 Route::get('/words/{word}', [WordController::class, 'show']);

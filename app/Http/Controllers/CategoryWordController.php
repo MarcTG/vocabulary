@@ -20,9 +20,9 @@ class CategoryWordController extends Controller
         return redirect()->back();
     }
 
-    public function delete(CategoryWord $categoryWord)
+    public function delete(Request $request)
     {
-        $categoryWord->delete();
+        CategoryWord::findOrFail($request->input('id'))->delete();
 
         return redirect()->back();
     }
