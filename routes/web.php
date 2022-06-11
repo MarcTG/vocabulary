@@ -20,19 +20,24 @@ Route::get('/', function() {
     return Inertia::render('Home');
 });
 
-Route::prefix('/categories')->group(function (){
+Route::prefix('/categories')->group(function() {
     Route::get('', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::get('/{category}', [CategoryController::class, 'show'])->name('categories.show');
     Route::post('', [CategoryController::class, 'store']);
     Route::post('/update', [CategoryController::class, 'update']);
     Route::delete('', [CategoryController::class, 'delete']);
 });
 
+Route::prefix('/category/word')->group(function() {
+    Route::post('', [CategoryWordController::class, 'store']);
+    Route::delete('', [CategoryWordController::class, 'delete']);
+});
 
-Route::post('/category/word', [CategoryWordController::class, 'store']);
-Route::delete('/category/word/', [CategoryWordController::class, 'delete']);
+Route::prefix('/words')->group(function () {
+    Route::get('/', [WordController::class, 'index']);
+/*    Route::get('/words/{word}', [WordController::class, 'show']);*/
+    Route::delete('', [WordController::class, 'delete']);
+});
 
-Route::get('/words', [WordController::class, 'index']);
-Route::get('/words/{word}', [WordController::class, 'show']);
+
 

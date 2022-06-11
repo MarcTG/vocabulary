@@ -40,13 +40,8 @@
 
             <div class="grid grid-cols-4 bg-slate-50 px-6 py-4 text-sm text-slate-600 text-left hover:bg-indigo-50" v-for="word in words">
                 <span>{{ word.singular }}</span>
-
-
                 <span>{{ word.plural }}</span>
-
-
                 <span>{{ word.translation }}</span>
-
                 <div class="text-right font-medium">
                     <button @click="removeWord(word.categoryWordId)" :disabled="form.processing" class="text-rose-500 hover:text-rose-700 hover:underline">Remover</button>
                 </div>
@@ -58,11 +53,8 @@
         <div class="shadow-lg rounded-lg overflow-hidden">
             <div class="grid grid-cols-4 bg-indigo-400 px-6 text-left text-sm font-medium text-white uppercase h-16 items-center">
                 <span>Singular</span>
-
                 <span>Plural</span>
-
                 <span>Traducción</span>
-
                 <div class="relative flex justify-end">
                     <input v-on:input="search()" v-model="searchData" class="border border-gray-300 rounded-lg focus:outline-blue-400 text-base text-slate-600 py-2 px-2" type="text" placeholder="Search ...">
                     <button class="-ml-12 z-20 px-4 py-2 text-blue-400 text-lg hover:text-blue-600"><i class="fas fa-search"></i></button>
@@ -70,21 +62,14 @@
             </div>
 
             <div class="grid grid-cols-4 bg-slate-50 px-6 py-4 text-sm text-slate-600 text-left hover:bg-indigo-50" v-for="word in newWords.data">
-                <span>
-                    {{ word.singular }}
-                </span>
-                <span>
-                    {{ word.plural }}
-                </span>
-                <span>
-                    {{ word.translation }}
-                </span>
+                <span>{{ word.singular }}</span>
+                <span>{{ word.plural }}</span>
+                <span>{{ word.translation }}</span>
                 <div class="text-right font-medium">
                     <button @click="addWord(word.id)" :disabled="form.processing" class="text-green-500 hover:text-green-700 hover:underline">Agragar</button>
                 </div>
             </div>
         </div>
-
 
         <Edit ref="create" :category="category"></Edit>
     </div>
